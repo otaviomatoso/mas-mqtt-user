@@ -4,9 +4,17 @@
 
 
 /* Initial goals */
-
+!start.
 
 /* Plans */
++!start
+   <- .print("agent bot is running");
+   .
+
++message(M)[source(percept)]
+   <- .print("Signal received from MQTT Artifact");
+      .print("MESSAGE: ", M);
+   .
 
 
 { include("$jacamoJar/templates/common-cartago.asl") }
