@@ -14,6 +14,8 @@
 +message(M)[source(percept)]
    <- .print("Signal received from MQTT Artifact");
       .print("MESSAGE: ", M);
+      .print("Sending this message to the User...");
+      .send(user, tell, M);
    .
 
 
