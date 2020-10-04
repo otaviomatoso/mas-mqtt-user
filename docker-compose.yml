@@ -1,0 +1,40 @@
+################################################################################
+# JACAMO_NODE-RED_MQTT_TELEGRAM
+################################################################################
+# docker-compose up
+################################################################################
+version: "3.7"
+
+services:
+  node-red:
+    image: otaviomatoso/nodered_mqtt-telegram:0.1
+    hostname: node-red
+    environment:
+      - TZ=America/Sao_Paulo
+      - FLOWS=flows.json
+    ports:
+      - "1880:1880"
+    networks:
+      - integration-net
+    volumes:
+      - "./node-red:/data"
+
+  jacamo-rest:
+    image: otaviomatoso/jacamo_mqtt-telegram:0.1
+    hostname: jacamo-rest
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "8080:8080"
+      - "3271:3271"
+      - "3272:3272"
+      - "3273:3273"
+    networks:
+      - integration-net
+    depends_on:
+      - node-red
+    volumes:
+      - "./jacamo/src:/app/src"
+
+networks:
+  integration-net:

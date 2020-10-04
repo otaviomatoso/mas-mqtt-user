@@ -2,11 +2,5 @@ mas main {
 
     agent bot
 
-    workspace dummy {
-        artifact mqtt : jacamo.rest.util.DummyArt() {
-           focused-by : bot
-        }
-    }
-
     platform: jacamo.rest.JCMRest("--main 2181 --rest-port 8080")
 }

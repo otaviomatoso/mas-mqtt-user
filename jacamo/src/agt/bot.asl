@@ -1,15 +1,17 @@
 // mas-mqtt-user
 
-/* Initial beliefs and rules */
-url("http://localhost:1880/mqtt"). // (local) URL Dummy Art
-
 /* Initial goals */
 !start.
 
 /* Plans */
-+!start : url(U)
-   <- register(U); // registers the URL for the Dummy Art
-      .print("agent bot is running");
++!start <- .print("agent bot is running").
+
++!focus(Art,Ws)[source(node_red)]
+   <- .print("Focusing on artifact ", Art, "...");
+      joinWorkspace(Ws,WsId);
+      lookupArtifact(Art,ArtId)[wid(WsId)];
+      focus(ArtId)[wid(WsId)];
+      .print("Ok");
    .
 
 +message(M)[source(percept)]

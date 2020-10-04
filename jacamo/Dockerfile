@@ -1,8 +1,8 @@
 # DOCKERFILE FOR JACAMO APP
 
 # to build:
-#    ./gradlew clean compileJava copyToLib
-#    docker build -t jacamo/mqtt_telegram .
+#    ./gradlew clean copyToLib
+#    docker build -t jacamo_mqtt-telegram .
 
 FROM alpine
 
